@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Γκαλερί | Μάνγκα Αζαλέα</title>
+<meta name="description" content="Γκαλερί πρωτότυπων manga και εικονογραφήσεων από την Azalea.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --aegean:    #1a3a5c;
+    --deep-sea:  #0d2540;
+    --sky:       #2d6a9f;
+    --gold:      #c9963a;
+    --pale-gold: #e8c97a;
+    --marble:    #f5f2ec;
+    --warm-white:#faf8f4;
+    --terra:     #b5542a;
+    --ink:       #1c1c1c;
+    --mist:      #d8d4cc;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    background-color: var(--warm-white);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* ── MEANDER ─────────────────────────────────────────── */
+  .meander {
+    width: 100%;
+    height: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='18'%3E%3Cpath d='M0 9 h8 v-7 h16 v14 h-8 v-7 h-8 v7 h16 v-14 h8' fill='none' stroke='%23c9963a' stroke-width='1.8'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: center;
+    opacity: 0.75;
+  }
+
+  /* ── HEADER ─────────────────────────────────────────── */
+  header {
+    background: var(--deep-sea);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .site-logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.15rem;
+    color: var(--pale-gold);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    line-height: 1.2;
+  }
+  .site-logo span {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: var(--mist);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  nav a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mist);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--pale-gold); }
+  nav a.active { color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+
+  /* ── PAGE HERO ───────────────────────────────────────── */
+  .page-hero {
+    background: linear-gradient(160deg, var(--deep-sea) 0%, var(--aegean) 100%);
+    padding: 3.5rem 2rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '✦  ✦  ✦';
+    position: absolute;
+    top: 1.5rem; left: 50%;
+    transform: translateX(-50%);
+    color: rgba(201,150,58,0.2);
+    font-size: 0.8rem;
+    letter-spacing: 2rem;
+  }
+  .page-hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.7rem;
+  }
+  .page-hero h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    color: var(--marble);
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+  .page-hero-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    color: rgba(232,201,122,0.75);
+  }
+
+  /* ── LAYOUT ──────────────────────────────────────────── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem;
+  }
+
+  /* ── FILTER TABS ─────────────────────────────────────── */
+  .filter-bar {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.8rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid var(--mist);
+    position: relative;
+  }
+  .filter-bar::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0;
+    width: 40px; height: 2px;
+    background: var(--gold);
+  }
+  .filter-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.1rem;
+    border: 1px solid var(--mist);
+    background: transparent;
+    color: #888;
+    cursor: pointer;
+    transition: all 0.2s;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+  .filter-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .filter-btn.active {
+    background: var(--aegean);
+    border-color: var(--aegean);
+    color: var(--pale-gold);
+  }
+
+  /* ── SECTION LABEL ───────────────────────────────────── */
+  .gallery-section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .gallery-section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--mist);
+  }
+
+  /* ── MANGA SERIES BLOCK ──────────────────────────────── */
+  .series-block {
+    margin-bottom: 4rem;
+  }
+  .series-block[data-cat="illust"] { display: none; }
+
+  .series-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.2rem;
+    margin-bottom: 1.4rem;
+  }
+  .series-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--aegean);
+  }
+  .series-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--terra);
+    border: 1px solid var(--terra);
+    padding: 0.15rem 0.5rem;
+  }
+  .series-desc {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 1.4rem;
+    max-width: 640px;
+  }
+
+  /* ── VOLUME GRID ─────────────────────────────────────── */
+  .volume-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.4rem;
+  }
+
+  .vol-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: var(--marble);
+    border: 1px solid var(--mist);
+  }
+  .vol-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(26,58,92,0.18);
+  }
+
+  .vol-thumb {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(145deg, var(--aegean), var(--deep-sea));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  /* subtle texture */
+  .vol-thumb::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 8px,
+      rgba(255,255,255,0.02) 8px,
+      rgba(255,255,255,0.02) 9px
+    );
+  }
+  .vol-num {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.2rem;
+    color: rgba(201,150,58,0.22);
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+  .vol-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pale-gold);
+    background: rgba(13,37,64,0.65);
+    padding: 0.2rem 0.6rem;
+    position: absolute;
+    bottom: 0.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 1;
+  }
+  .vol-new {
+    position: absolute;
+    top: 0.5rem; right: 0.5rem;
+    background: var(--terra);
+    color: #fff;
+    font-family: 'Cinzel', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.45rem;
+    z-index: 2;
+  }
+
+  .vol-info {
+    padding: 0.7rem 0.8rem 0.9rem;
+  }
+  .vol-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--aegean);
+    margin-bottom: 0.2rem;
+  }
+  .vol-meta {
+    font-size: 0.7rem;
+    color: #999;
+    font-style: italic;
+  }
+
+  /* ── ILLUSTRATION GRID ───────────────────────────────── */
+  .illust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.2rem;
+  }
+  .illust-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: var(--marble);
+    border: 1px solid var(--mist);
+  }
+  .illust-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(26,58,92,0.15);
+  }
+  .illust-thumb {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: linear-gradient(135deg, var(--sky), var(--deep-sea));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .illust-thumb::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 10px,
+      rgba(255,255,255,0.015) 10px,
+      rgba(255,255,255,0.015) 11px
+    );
+  }
+  .illust-icon {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.5rem;
+    color: rgba(232,201,122,0.2);
+    position: relative;
+    z-index: 1;
+  }
+  .illust-chara {
+    position: absolute;
+    bottom: 0.5rem; left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--pale-gold);
+    background: rgba(13,37,64,0.7);
+    padding: 0.18rem 0.5rem;
+    white-space: nowrap;
+    z-index: 1;
+  }
+  .illust-info {
+    padding: 0.6rem 0.8rem 0.75rem;
+  }
+  .illust-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    color: var(--aegean);
+    margin-bottom: 0.15rem;
+  }
+  .illust-date {
+    font-size: 0.68rem;
+    color: #aaa;
+    font-style: italic;
+  }
+
+  /* ── NOTICE BAND ─────────────────────────────────────── */
+  .notice-band {
+    background: var(--marble);
+    border-top: 1px solid var(--mist);
+    border-bottom: 1px solid var(--mist);
+  }
+  .notice-band .container {
+    padding: 1.4rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .notice-icon {
+    font-size: 1rem;
+    color: var(--terra);
+    flex-shrink: 0;
+  }
+  .notice-text {
+    font-size: 0.78rem;
+    color: #666;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  /* ── DIVIDER ─────────────────────────────────────────── */
+  .divider-wrap { background: var(--warm-white); }
+
+  /* ── FOOTER ──────────────────────────────────────────── */
+  footer {
+    background: #090f18;
+    color: rgba(216,212,204,0.5);
+    text-align: center;
+    padding: 2.5rem 2rem;
+    font-size: 0.78rem;
+    line-height: 2;
+  }
+  footer .footer-logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1rem;
+    color: rgba(201,150,58,0.6);
+    display: block;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.05em;
+  }
+  footer a { color: inherit; text-decoration: none; }
+  footer a:hover { color: var(--pale-gold); }
+  footer .notice {
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    color: rgba(216,212,204,0.3);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 1rem;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 700px) {
+    nav { gap: 1.1rem; }
+    nav a { font-size: 0.62rem; letter-spacing: 0.1em; }
+    .volume-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 1rem; }
+    .illust-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  }
+  @media (max-width: 480px) {
+    nav a:not(.active) { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="site-logo">
+      Μάνγκα Αζαλέα
+      <span>Azalea Creative Room</span>
+    </a>
+    <nav>
+      <a href="index.html">Αρχική</a>
+      <a href="gallery.html" class="active">Γκαλερί</a>
+      <a href="translation.html">Μεταφράσεις</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">Σχετικά</a>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <p class="page-hero-eyebrow">✦ Έργα ✦</p>
+  <h1>Γκαλερί</h1>
+  <p class="page-hero-sub">Manga · Εικονογραφήσεις · Χαρακτήρες</p>
+</div>
+
+<div class="divider-wrap"><div class="meander"></div></div>
+
+<!-- NOTICE -->
+<div class="notice-band">
+  <div class="container">
+    <span class="notice-icon">⚠</span>
+    <p class="notice-text">
+      Όλα τα έργα είναι πρωτότυπα και προστατεύονται από πνευματικά δικαιώματα.
+      Απαγορεύεται η αναδημοσίευση και η χρήση για εκπαίδευση AI χωρίς άδεια. ·
+      すべての作品は無断転載・AI学習への使用を禁じます。
+    </p>
+  </div>
+</div>
+
+<!-- MAIN GALLERY -->
+<div class="container">
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterGallery('all', this)">Όλα</button>
+    <button class="filter-btn" onclick="filterGallery('manga', this)">Manga</button>
+    <button class="filter-btn" onclick="filterGallery('illust', this)">Εικονογραφήσεις</button>
+  </div>
+
+  <!-- ── MANGA SERIES ─────────────────────────────────── -->
+  <div class="gallery-section-label" id="label-manga">Manga Σειρές</div>
+
+  <!-- Series 1 -->
+  <div class="series-block" data-cat="manga">
+    <div class="series-header">
+      <span class="series-title">Τίτλος Σειράς Α</span>
+      <span class="series-badge">Σε εξέλιξη</span>
+    </div>
+    <p class="series-desc">
+      Μια φανταστική ιστορία περιπέτειας — περιγραφή της πλοκής εδώ. 
+      Πρωτότυπο manga που υποβλήθηκε σε ιαπωνικά περιοδικά.
+    </p>
+    <div class="volume-grid">
+      <a href="#" class="vol-card">
+        <div class="vol-thumb">
+          <span class="vol-new">Νέο</span>
+          <span class="vol-num">03</span>
+          <span class="vol-tag">Κεφάλαιο 3</span>
+        </div>
+        <div class="vol-info">
+          <p class="vol-label">Κεφάλαιο 3</p>
+          <p class="vol-meta">2025.06</p>
+        </div>
+      </a>
+      <a href="#" class="vol-card">
+        <div class="vol-thumb">
+          <span class="vol-num">02</span>
+          <span class="vol-tag">Κεφάλαιο 2</span>
+        </div>
+        <div class="vol-info">
+          <p class="vol-label">Κεφάλαιο 2</p>
+          <p class="vol-meta">2025.03</p>
+        </div>
+      </a>
+      <a href="#" class="vol-card">
+        <div class="vol-thumb">
+          <span class="vol-num">01</span>
+          <span class="vol-tag">Κεφάλαιο 1</span>
+        </div>
+        <div class="vol-info">
+          <p class="vol-label">Κεφάλαιο 1</p>
+          <p class="vol-meta">2024.12</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Series 2 -->
+  <div class="series-block" data-cat="manga">
+    <div class="series-header">
+      <span class="series-title">Τίτλος Σειράς Β</span>
+      <span class="series-badge">Ολοκληρωμένο</span>
+    </div>
+    <p class="series-desc">
+      Μια σύντομη ιστορία δράσης με μοναδικούς χαρακτήρες. 
+      Διαθέσιμο στο Jump Rookie.
+    </p>
+    <div class="volume-grid">
+      <a href="#" class="vol-card">
+        <div class="vol-thumb">
+          <span class="vol-num">02</span>
+          <span class="vol-tag">Κεφάλαιο 2</span>
+        </div>
+        <div class="vol-info">
+          <p class="vol-label">Κεφάλαιο 2 — Τέλος</p>
+          <p class="vol-meta">2024.10</p>
+        </div>
+      </a>
+      <a href="#" class="vol-card">
+        <div class="vol-thumb">
+          <span class="vol-num">01</span>
+          <span class="vol-tag">Κεφάλαιο 1</span>
+        </div>
+        <div class="vol-info">
+          <p class="vol-label">Κεφάλαιο 1</p>
+          <p class="vol-meta">2024.08</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Series 3 — ONE-SHOT -->
+  <div class="series-block" data-cat="manga">
+    <div class="series-header">
+      <span class="series-title">Τίτλος One-Shot</span>
+      <span class="series-badge">One-Shot</span>
+    </div>
+    <p class="series-desc">
+      Αυτοτελής ιστορία. Υποβλήθηκε σε διαγωνισμό manga.
+    </p>
+    <div class="volume-grid">
+      <a href="#" class="vol-card">
+        <div class="vol-thumb">
+          <span class="vol-num">—</span>
+          <span class="vol-tag">One-Shot</span>
+        </div>
+        <div class="vol-info">
+          <p class="vol-label">Ολόκληρο το έργο</p>
+          <p class="vol-meta">2024.06</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="divider-wrap" style="margin: 0 -2rem;"><div class="meander"></div></div>
+
+  <!-- ── ILLUSTRATIONS ────────────────────────────────── -->
+  <div class="gallery-section-label" id="label-illust" style="margin-top: 3rem;">Εικονογραφήσεις</div>
+
+  <div class="series-block" data-cat="illust" style="display: block;">
+    <p class="series-desc">Πρωτότυπες εικονογραφήσεις χαρακτήρων, συμπεριλαμβανομένης της Eris και άλλων.</p>
+    <div class="illust-grid">
+
+      <a href="#" class="illust-card">
+        <div class="illust-thumb">
+          <span class="illust-icon">✦</span>
+          <span class="illust-chara">Eris</span>
+        </div>
+        <div class="illust-info">
+          <p class="illust-title">Eris — Καλοκαίρι</p>
+          <p class="illust-date">2025.06</p>
+        </div>
+      </a>
+
+      <a href="#" class="illust-card">
+        <div class="illust-thumb">
+          <span class="illust-icon">✦</span>
+          <span class="illust-chara">Eris</span>
+        </div>
+        <div class="illust-info">
+          <p class="illust-title">Eris — Χειμώνας</p>
+          <p class="illust-date">2025.01</p>
+        </div>
+      </a>
+
+      <a href="#" class="illust-card">
+        <div class="illust-thumb">
+          <span class="illust-icon">✦</span>
+          <span class="illust-chara">Πρωτότυπο</span>
+        </div>
+        <div class="illust-info">
+          <p class="illust-title">Χαρακτήρας Β</p>
+          <p class="illust-date">2024.11</p>
+        </div>
+      </a>
+
+      <a href="#" class="illust-card">
+        <div class="illust-thumb">
+          <span class="illust-icon">✦</span>
+          <span class="illust-chara">Πρωτότυπο</span>
+        </div>
+        <div class="illust-info">
+          <p class="illust-title">Σκηνή από Manga</p>
+          <p class="illust-date">2024.09</p>
+        </div>
+      </a>
+
+      <a href="#" class="illust-card">
+        <div class="illust-thumb">
+          <span class="illust-icon">✦</span>
+          <span class="illust-chara">Εξώφυλλο</span>
+        </div>
+        <div class="illust-info">
+          <p class="illust-title">Εξώφυλλο Σειράς Α</p>
+          <p class="illust-date">2024.12</p>
+        </div>
+      </a>
+
+      <a href="#" class="illust-card">
+        <div class="illust-thumb">
+          <span class="illust-icon">✦</span>
+          <span class="illust-chara">Πρωτότυπο</span>
+        </div>
+        <div class="illust-info">
+          <p class="illust-title">Εικονογράφηση #6</p>
+          <p class="illust-date">2024.07</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- FOOTER -->
+<div class="divider-wrap"><div class="meander"></div></div>
+<footer>
+  <span class="footer-logo">Μάνγκα Αζαλέα</span>
+  &copy; 2025 Azalea / Azalea Creative Room. All rights reserved.<br>
+  <a href="index.html">Αρχική</a> &nbsp;·&nbsp;
+  <a href="gallery.html">Γκαλερί</a> &nbsp;·&nbsp;
+  <a href="translation.html">Μεταφράσεις</a> &nbsp;·&nbsp;
+  <a href="blog.html">Blog</a> &nbsp;·&nbsp;
+  <a href="about.html">Σχετικά</a>
+  <p class="notice">
+    このサイトに掲載しているすべての画像・文章は無断転載・AI学習への使用を禁じます。<br>
+    All images and text on this site are prohibited from unauthorized reproduction and AI training use.
+  </p>
+</footer>
+
+<script>
+  function filterGallery(cat, btn) {
+    // Update button states
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const blocks = document.querySelectorAll('.series-block');
+    const mangaLabel = document.getElementById('label-manga');
+    const illustLabel = document.getElementById('label-illust');
+
+    blocks.forEach(block => {
+      const blockCat = block.dataset.cat;
+      if (cat === 'all') {
+        block.style.display = 'block';
+      } else if (blockCat === cat) {
+        block.style.display = 'block';
+      } else {
+        block.style.display = 'none';
+      }
+    });
+
+    // Toggle section labels
+    if (cat === 'illust') {
+      mangaLabel.style.display = 'none';
+      illustLabel.style.display = 'flex';
+    } else if (cat === 'manga') {
+      mangaLabel.style.display = 'flex';
+      illustLabel.style.display = 'none';
+    } else {
+      mangaLabel.style.display = 'flex';
+      illustLabel.style.display = 'flex';
+    }
+  }
+</script>
+
+</body>
+</html>

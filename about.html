@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Σχετικά | Μάνγκα Αζαλέα</title>
+<meta name="description" content="Σχετικά με την Azalea — manga artist από την Ιαπωνία. Σύνδεσμοι και φόρμα επικοινωνίας.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --aegean:    #1a3a5c;
+    --deep-sea:  #0d2540;
+    --sky:       #2d6a9f;
+    --gold:      #c9963a;
+    --pale-gold: #e8c97a;
+    --marble:    #f5f2ec;
+    --warm-white:#faf8f4;
+    --terra:     #b5542a;
+    --ink:       #1c1c1c;
+    --mist:      #d8d4cc;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    background-color: var(--warm-white);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* ── MEANDER ─────────────────────────────────────────── */
+  .meander {
+    width: 100%;
+    height: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='18'%3E%3Cpath d='M0 9 h8 v-7 h16 v14 h-8 v-7 h-8 v7 h16 v-14 h8' fill='none' stroke='%23c9963a' stroke-width='1.8'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: center;
+    opacity: 0.75;
+  }
+
+  /* ── HEADER ─────────────────────────────────────────── */
+  header {
+    background: var(--deep-sea);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .site-logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.15rem;
+    color: var(--pale-gold);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    line-height: 1.2;
+  }
+  .site-logo span {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: var(--mist);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  nav { display: flex; gap: 2rem; align-items: center; }
+  nav a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mist);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--pale-gold); }
+  nav a.active { color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+
+  /* ── PAGE HERO ───────────────────────────────────────── */
+  .page-hero {
+    background: linear-gradient(160deg, var(--deep-sea) 0%, var(--aegean) 100%);
+    padding: 3.5rem 2rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '✦  ✦  ✦';
+    position: absolute;
+    top: 1.5rem; left: 50%;
+    transform: translateX(-50%);
+    color: rgba(201,150,58,0.2);
+    font-size: 0.8rem;
+    letter-spacing: 2rem;
+  }
+  .page-hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.7rem;
+  }
+  .page-hero h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    color: var(--marble);
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+  .page-hero-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    color: rgba(232,201,122,0.75);
+  }
+
+  /* ── CONTAINER ───────────────────────────────────────── */
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 4rem 2rem 5rem;
+  }
+
+  /* ── SECTION LABEL ───────────────────────────────────── */
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--mist), transparent);
+  }
+
+  /* ── PROFILE BLOCK ───────────────────────────────────── */
+  .profile-block {
+    margin-bottom: 3.5rem;
+  }
+  .profile-block p {
+    font-size: 0.92rem;
+    color: #444;
+    line-height: 1.95;
+    margin-bottom: 0.9rem;
+  }
+  .profile-block p:last-child { margin-bottom: 0; }
+
+  /* ── LINK GRID ───────────────────────────────────────── */
+  .link-section { margin-bottom: 3rem; }
+
+  .link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    background: var(--marble);
+    border: 1px solid var(--mist);
+    border-left: 3px solid var(--gold);
+    padding: 0.9rem 1rem;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .link-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(26,58,92,0.12);
+    border-left-color: var(--terra);
+  }
+
+  .link-icon {
+    font-size: 1.3rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(201,150,58,0.08);
+    border: 1px solid rgba(201,150,58,0.2);
+    flex-shrink: 0;
+  }
+
+  .link-text { flex: 1; min-width: 0; }
+  .link-name {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--aegean);
+    margin-bottom: 0.15rem;
+  }
+  .link-desc {
+    display: block;
+    font-size: 0.7rem;
+    color: #999;
+    font-style: italic;
+  }
+
+  .link-arrow {
+    font-size: 1rem;
+    color: var(--mist);
+    flex-shrink: 0;
+    transition: color 0.2s, transform 0.2s;
+  }
+  .link-card:hover .link-arrow {
+    color: var(--gold);
+    transform: translateX(3px);
+  }
+
+  /* ── FORM ────────────────────────────────────────────── */
+  .form-section { margin-bottom: 0; }
+
+  .form-card {
+    background: var(--marble);
+    border: 1px solid var(--mist);
+    border-left: 3px solid var(--gold);
+    padding: 2rem 2rem 2.2rem;
+    margin-top: 0.5rem;
+  }
+
+  .form-intro {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 1.6rem;
+    line-height: 1.8;
+  }
+
+  .form-group { margin-bottom: 1.2rem; }
+
+  .form-label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 0.45rem;
+  }
+  .required { color: #c06070; }
+
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    background: var(--warm-white);
+    border: 1px solid var(--mist);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', serif;
+    font-size: 0.88rem;
+    padding: 0.6rem 0.9rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+  }
+  .form-input::placeholder,
+  .form-textarea::placeholder { color: var(--mist); }
+  .form-input:focus,
+  .form-textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(201,150,58,0.1);
+  }
+  .form-textarea {
+    resize: vertical;
+    min-height: 130px;
+  }
+
+  .field-error {
+    display: block;
+    font-size: 0.7rem;
+    color: #c06070;
+    margin-top: 0.35rem;
+    font-style: italic;
+  }
+
+  .form-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--deep-sea);
+    background: var(--gold);
+    border: none;
+    padding: 0.72rem 2rem;
+    cursor: pointer;
+    margin-top: 0.4rem;
+    transition: background 0.2s, transform 0.15s;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+  .form-submit:hover {
+    background: var(--pale-gold);
+    transform: translateY(-1px);
+  }
+  .form-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .form-success {
+    background: rgba(26,58,92,0.06);
+    border: 1px solid rgba(201,150,58,0.4);
+    padding: 1rem 1.2rem;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--aegean);
+    margin-bottom: 1.2rem;
+  }
+  .form-success-icon { display: block; font-size: 1.2rem; margin-bottom: 0.4rem; color: var(--gold); }
+
+  .form-error-global {
+    background: rgba(181,84,42,0.08);
+    border: 1px solid rgba(181,84,42,0.3);
+    padding: 0.8rem 1rem;
+    color: var(--terra);
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+
+  /* ── FOOTER ──────────────────────────────────────────── */
+  footer {
+    background: #090f18;
+    color: rgba(216,212,204,0.5);
+    text-align: center;
+    padding: 2.5rem 2rem;
+    font-size: 0.78rem;
+    line-height: 2;
+  }
+  footer .footer-logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1rem;
+    color: rgba(201,150,58,0.6);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+  footer a { color: inherit; text-decoration: none; }
+  footer a:hover { color: var(--pale-gold); }
+  footer .notice {
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    color: rgba(216,212,204,0.3);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 1rem;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 700px) {
+    nav { gap: 1.1rem; }
+    nav a { font-size: 0.62rem; letter-spacing: 0.1em; }
+    .link-grid { grid-template-columns: 1fr; }
+    .form-card { padding: 1.4rem 1.2rem 1.6rem; }
+  }
+  @media (max-width: 480px) {
+    nav a:not(.active) { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="site-logo">
+      Μάνγκα Αζαλέα
+      <span>Azalea Creative Room</span>
+    </a>
+    <nav>
+      <a href="index.html">Αρχική</a>
+      <a href="gallery.html">Γκαλερί</a>
+      <a href="translation.html">Μεταφράσεις</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html" class="active">Σχετικά</a>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <p class="page-hero-eyebrow">✦ Δημιουργός ✦</p>
+  <h1>Σχετικά</h1>
+  <p class="page-hero-sub">About · Links · Contact</p>
+</div>
+
+<div class="meander"></div>
+
+<!-- MAIN -->
+<div class="container">
+
+  <!-- PROFILE -->
+  <div class="profile-block">
+    <p class="section-label">Σχετικά με μένα</p>
+    <p>
+      Γεια σας! Είμαι η Azalea, manga artist και εικονογράφος από την Ιαπωνία.
+      Δημιουργώ πρωτότυπα manga και εικονογραφήσεις, και τα μοιράζομαι σε διάφορες πλατφόρμες.
+    </p>
+    <p>
+      Αυτός ο ιστότοπος είναι αφιερωμένος στους ελληνόφωνους αναγνώστες.
+      Χαίρομαι πολύ που μπορώ να μοιραστώ τα έργα μου μαζί σας.
+      Ευχαριστώ για την υποστήριξη σας!
+    </p>
+  </div>
+
+  <!-- MANGA & ILLUSTRATION SITES -->
+  <div class="link-section">
+    <p class="section-label">Manga · Εικονογραφήσεις</p>
+    <div class="link-grid">
+
+      <a class="link-card" href="https://rookie.shonenjump.com/users/14728546961183734555" target="_blank" rel="noopener">
+        <div class="link-icon">📚</div>
+        <div class="link-text">
+          <span class="link-name">Jump Rookie</span>
+          <span class="link-desc">Πρωτότυπα manga</span>
+        </div>
+        <span class="link-arrow">›</span>
+      </a>
+
+      <a class="link-card" href="https://daysneo.com/author/Sam333333Sam/" target="_blank" rel="noopener">
+        <div class="link-icon">🌙</div>
+        <div class="link-text">
+          <span class="link-name">DaysNEO</span>
+          <span class="link-desc">Manga</span>
+        </div>
+        <span class="link-arrow">›</span>
+      </a>
+
+      <a class="link-card" href="https://www.pixiv.net/users/105728284" target="_blank" rel="noopener">
+        <div class="link-icon">🎨</div>
+        <div class="link-text">
+          <span class="link-name">Pixiv</span>
+          <span class="link-desc">Εικονογραφήσεις · Fan art</span>
+        </div>
+        <span class="link-arrow">›</span>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- SNS -->
+  <div class="link-section">
+    <p class="section-label">SNS · Άλλα</p>
+    <div class="link-grid">
+
+      <a class="link-card" href="https://bsky.app/profile/azaleaazalea88.bsky.social" target="_blank" rel="noopener">
+        <div class="link-icon">🦋</div>
+        <div class="link-text">
+          <span class="link-name">Bluesky</span>
+          <span class="link-desc">Νέα και ανακοινώσεις</span>
+        </div>
+        <span class="link-arrow">›</span>
+      </a>
+
+      <a class="link-card" href="https://kakuyomu.jp/users/azalea_azalea72" target="_blank" rel="noopener">
+        <div class="link-icon">✒️</div>
+        <div class="link-text">
+          <span class="link-name">Kakuyomu</span>
+          <span class="link-desc">Πρωτότυπες ιστορίες</span>
+        </div>
+        <span class="link-arrow">›</span>
+      </a>
+
+      <a class="link-card" href="https://www.youtube.com/@LilyPopins0512" target="_blank" rel="noopener">
+        <div class="link-icon">🎬</div>
+        <div class="link-text">
+          <span class="link-name">YouTube (リリポピ)</span>
+          <span class="link-desc">Κανάλι βίντεο</span>
+        </div>
+        <span class="link-arrow">›</span>
+      </a>
+
+      <a class="link-card" href="https://azaleacreativeroom888.github.io/" target="_blank" rel="noopener">
+        <div class="link-icon">🌸</div>
+        <div class="link-text">
+          <span class="link-name">Azalea Creative Room</span>
+          <span class="link-desc">Κύριος ιστότοπος (ιαπωνικά)</span>
+        </div>
+        <span class="link-arrow">›</span>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <div class="form-section">
+    <p class="section-label">Επικοινωνία</p>
+    <div class="form-card">
+      <p class="form-intro">
+        Ερωτήσεις, σχόλια ή εντυπώσεις — γράψτε μου από εδώ.<br>
+        Θα απαντήσω μέσω email το συντομότερο δυνατό.
+      </p>
+
+      <div data-fs-success class="form-success" style="display:none;">
+        <span class="form-success-icon">✦</span>
+        Το μήνυμά σας εστάλη. Ευχαριστώ πολύ!
+      </div>
+
+      <div data-fs-error class="form-error-global" style="display:none;"></div>
+
+      <form id="contact-form" action="https://formspree.io/f/maqvpvoz" method="POST">
+
+        <div class="form-group">
+          <label class="form-label" for="name">Όνομα</label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="Το όνομά σας">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email <span class="required">*</span></label>
+          <input class="form-input" type="email" id="email" name="email" data-fs-field placeholder="example@email.com" required>
+          <span data-fs-error="email" class="field-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">Μήνυμα <span class="required">*</span></label>
+          <textarea class="form-textarea" id="message" name="message" data-fs-field placeholder="Γράψτε το μήνυμά σας εδώ…" rows="6" required></textarea>
+          <span data-fs-error="message" class="field-error"></span>
+        </div>
+
+        <button class="form-submit" type="submit" data-fs-submit-btn>
+          ✦ Αποστολή
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- FOOTER -->
+<div class="meander"></div>
+<footer>
+  <span class="footer-logo">Μάνγκα Αζαλέα</span>
+  &copy; 2025 Azalea / Azalea Creative Room. All rights reserved.<br>
+  <a href="index.html">Αρχική</a> &nbsp;·&nbsp;
+  <a href="gallery.html">Γκαλερί</a> &nbsp;·&nbsp;
+  <a href="translation.html">Μεταφράσεις</a> &nbsp;·&nbsp;
+  <a href="blog.html">Blog</a> &nbsp;·&nbsp;
+  <a href="about.html">Σχετικά</a>
+  <p class="notice">
+    このサイトに掲載しているすべての画像・文章は無断転載・AI学習への使用を禁じます。<br>
+    All images and text on this site are prohibited from unauthorized reproduction and AI training use.
+  </p>
+</footer>
+
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#contact-form', formId: 'maqvpvoz' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+</body>
+</html>

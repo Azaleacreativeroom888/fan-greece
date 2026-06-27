@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | Μάνγκα Αζαλέα</title>
+<meta name="description" content="Ημερολόγιο της Azalea — σκέψεις για manga, εικονογράφηση και δημιουργία.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --aegean:    #1a3a5c;
+    --deep-sea:  #0d2540;
+    --gold:      #c9963a;
+    --pale-gold: #e8c97a;
+    --marble:    #f5f2ec;
+    --warm-white:#faf8f4;
+    --terra:     #b5542a;
+    --ink:       #1c1c1c;
+    --mist:      #d8d4cc;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    background-color: var(--warm-white);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* ── MEANDER ─────────────────────────────────────────── */
+  .meander {
+    width: 100%;
+    height: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='18'%3E%3Cpath d='M0 9 h8 v-7 h16 v14 h-8 v-7 h-8 v7 h16 v-14 h8' fill='none' stroke='%23c9963a' stroke-width='1.8'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: center;
+    opacity: 0.75;
+  }
+
+  /* ── HEADER ─────────────────────────────────────────── */
+  header {
+    background: var(--deep-sea);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .site-logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.15rem;
+    color: var(--pale-gold);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    line-height: 1.2;
+  }
+  .site-logo span {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: var(--mist);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  nav a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mist);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--pale-gold); }
+  nav a.active { color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+
+  /* ── PAGE HERO ───────────────────────────────────────── */
+  .page-hero {
+    background: linear-gradient(160deg, var(--deep-sea) 0%, var(--aegean) 100%);
+    padding: 3.5rem 2rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '✦  ✦  ✦';
+    position: absolute;
+    top: 1.5rem; left: 50%;
+    transform: translateX(-50%);
+    color: rgba(201,150,58,0.2);
+    font-size: 0.8rem;
+    letter-spacing: 2rem;
+  }
+  .page-hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.7rem;
+  }
+  .page-hero h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    color: var(--marble);
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+  .page-hero-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    color: rgba(232,201,122,0.75);
+  }
+
+  /* ── BLOG FEED ───────────────────────────────────────── */
+  .feed {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4rem 2rem 5rem;
+  }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 0 2rem;
+    padding-bottom: 2.4rem;
+    margin-bottom: 2.4rem;
+    border-bottom: 1px solid var(--mist);
+  }
+  .entry:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .entry-date {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--terra);
+    padding-top: 0.25rem;
+    line-height: 1.5;
+  }
+  .entry-date .year {
+    display: block;
+    font-size: 0.6rem;
+    color: var(--mist);
+    letter-spacing: 0.12em;
+  }
+
+  .entry-body p {
+    font-size: 0.92rem;
+    color: #444;
+    line-height: 1.9;
+    margin-bottom: 0.8rem;
+  }
+  .entry-body p:last-child { margin-bottom: 0; }
+
+  /* ── FOOTER ──────────────────────────────────────────── */
+  footer {
+    background: #090f18;
+    color: rgba(216,212,204,0.5);
+    text-align: center;
+    padding: 2.5rem 2rem;
+    font-size: 0.78rem;
+    line-height: 2;
+  }
+  footer .footer-logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1rem;
+    color: rgba(201,150,58,0.6);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+  footer a { color: inherit; text-decoration: none; }
+  footer a:hover { color: var(--pale-gold); }
+  footer .notice {
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    color: rgba(216,212,204,0.3);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 1rem;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .entry { grid-template-columns: 1fr; gap: 0.3rem; }
+    .entry-date { padding-top: 0; }
+    nav { gap: 1.1rem; }
+    nav a { font-size: 0.62rem; letter-spacing: 0.1em; }
+  }
+  @media (max-width: 480px) {
+    nav a:not(.active) { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="site-logo">
+      Μάνγκα Αζαλέα
+      <span>Azalea Creative Room</span>
+    </a>
+    <nav>
+      <a href="index.html">Αρχική</a>
+      <a href="gallery.html">Γκαλερί</a>
+      <a href="translation.html">Μεταφράσεις</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="about.html">Σχετικά</a>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <p class="page-hero-eyebrow">✦ Ημερολόγιο ✦</p>
+  <h1>Blog</h1>
+  <p class="page-hero-sub">Σκέψεις για manga και δημιουργία</p>
+</div>
+
+<div class="meander"></div>
+
+<!-- BLOG FEED -->
+<div class="feed">
+
+  <div class="entry">
+    <div class="entry-date">
+      <span class="year">2025</span>
+      06.01
+    </div>
+    <div class="entry-body">
+      <p>Ξεκίνησα αυτόν τον ελληνικό ιστότοπο σήμερα. Χαίρομαι πολύ που μπορώ να μοιραστώ τα έργα μου με ελληνόφωνους αναγνώστες. Η ελληνική γλώσσα είναι πολύ όμορφη — και η Ελλάδα έχει μια εκπληκτική ιστορία τέχνης που με εμπνέει.</p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-date">
+      <span class="year">2025</span>
+      05.15
+    </div>
+    <div class="entry-body">
+      <p>Ολοκλήρωσα μια νέα εικονογράφηση της Eris. Αυτή τη φορά χρησιμοποίησα πιο ζωηρά χρώματα από το συνηθισμένο. Αναρωτιέμαι αν αρέσει στους αναγνώστες.</p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-date">
+      <span class="year">2025</span>
+      04.28
+    </div>
+    <div class="entry-body">
+      <p>Εργάζομαι στη μετάφραση του τρίτου κεφαλαίου. Η μετάφραση manga από τα ιαπωνικά στα ελληνικά είναι πιο δύσκολη από ό,τι περίμενα — ειδικά τα ηχητικά εφέ και οι ιδιωματισμοί. Αλλά είναι και πολύ ενδιαφέρον.</p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-date">
+      <span class="year">2025</span>
+      03.10
+    </div>
+    <div class="entry-body">
+      <p>Το δεύτερο κεφάλαιο της Σειράς Α δημοσιεύτηκε. Ήμουν πολύ νευρική πριν τη δημοσίευση, αλλά οι αντιδράσεις ήταν θετικές. Σας ευχαριστώ όλους για την υποστήριξη.</p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-date">
+      <span class="year">2024</span>
+      12.20
+    </div>
+    <div class="entry-body">
+      <p>Χαρούμενα Χριστούγεννα από την Ιαπωνία! Σχεδιάζω το νέο κεφάλαιο κατά τη διάρκεια των διακοπών. Ο χειμώνας στην Ιαπωνία είναι κρύος αλλά πολύ όμορφος.</p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-date">
+      <span class="year">2024</span>
+      12.01
+    </div>
+    <div class="entry-body">
+      <p>Δημοσίευσα το πρώτο κεφάλαιο της Σειράς Α. Είναι η πρώτη φορά που μοιράζομαι manga σε ελληνικό κοινό — μια συναρπαστική εμπειρία.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="meander"></div>
+<footer>
+  <span class="footer-logo">Μάνγκα Αζαλέα</span>
+  &copy; 2025 Azalea / Azalea Creative Room. All rights reserved.<br>
+  <a href="index.html">Αρχική</a> &nbsp;·&nbsp;
+  <a href="gallery.html">Γκαλερί</a> &nbsp;·&nbsp;
+  <a href="translation.html">Μεταφράσεις</a> &nbsp;·&nbsp;
+  <a href="blog.html">Blog</a> &nbsp;·&nbsp;
+  <a href="about.html">Σχετικά</a>
+  <p class="notice">
+    このサイトに掲載しているすべての画像・文章は無断転載・AI学習への使用を禁じます。<br>
+    All images and text on this site are prohibited from unauthorized reproduction and AI training use.
+  </p>
+</footer>
+
+</body>
+</html>

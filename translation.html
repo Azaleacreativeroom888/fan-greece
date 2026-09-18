@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Μεταφράσεις | Μάνγκα Αζαλέα</title>
-<meta name="description" content="Ημερολόγιο μεταφράσεων — λέξεις, εκφράσεις και σημειώσεις μετάφρασης από την Azalea.">
+<meta name="description" content="Ημερολόγιο μεταφράσεων — πρωτότυπο κείμενο, μετάφραση, ανάλυση λέξεων από την Azalea.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -15,6 +15,7 @@
   :root {
     --aegean:    #1a3a5c;
     --deep-sea:  #0d2540;
+    --sky:       #2d6a9f;
     --gold:      #c9963a;
     --pale-gold: #e8c97a;
     --marble:    #f5f2ec;
@@ -22,7 +23,7 @@
     --terra:     #b5542a;
     --ink:       #1c1c1c;
     --mist:      #d8d4cc;
-    --memo-bg:   #fdf8f0;
+    --memo-bg:   #fdf6e8;
   }
 
   html { scroll-behavior: smooth; }
@@ -100,6 +101,18 @@
     overflow: hidden;
   }
   .page-hero::before {
+    content: '翻訳  訳  注  翻訳  訳  注  翻訳';
+    position: absolute;
+    bottom: -0.5rem; left: 0; right: 0;
+    font-size: 5rem;
+    opacity: 0.04;
+    letter-spacing: 0.3em;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    color: var(--pale-gold);
+  }
+  .page-hero::after {
     content: '✦  ✦  ✦';
     position: absolute;
     top: 1.5rem; left: 50%;
@@ -115,6 +128,7 @@
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 0.7rem;
+    position: relative;
   }
   .page-hero h1 {
     font-family: 'Cinzel Decorative', serif;
@@ -122,110 +136,248 @@
     color: var(--marble);
     font-weight: 700;
     margin-bottom: 0.6rem;
+    position: relative;
   }
   .page-hero-sub {
     font-family: 'Cinzel', serif;
     font-size: 0.8rem;
     letter-spacing: 0.12em;
     color: rgba(232,201,122,0.75);
+    position: relative;
   }
 
-  /* ── CONTAINER ───────────────────────────────────────── */
-  .container {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 3.5rem 2rem 5rem;
+  /* ── LAYOUT ──────────────────────────────────────────── */
+  .layout {
+    max-width: 1060px;
+    margin: 3rem auto 5rem;
+    padding: 0 2rem;
     display: flex;
-    flex-direction: column;
-    gap: 1.8rem;
+    gap: 2.4rem;
+    align-items: flex-start;
   }
+  .main-col { flex: 3; min-width: 0; }
+  .sidebar-col { flex: 1; min-width: 180px; }
 
-  /* ── ENTRY CARD ──────────────────────────────────────── */
-  .entry-card {
+  /* ── SIDEBAR ─────────────────────────────────────────── */
+  .sidebar-block {
     background: var(--marble);
     border: 1px solid var(--mist);
     border-top: 3px solid var(--gold);
-    animation: fadeUp 0.35s ease both;
+    padding: 1.4rem;
+    margin-bottom: 1.4rem;
+    position: sticky;
+    top: 84px;
   }
-
-  .entry-card:nth-child(1){animation-delay:0.05s}
-  .entry-card:nth-child(2){animation-delay:0.10s}
-  .entry-card:nth-child(3){animation-delay:0.15s}
-  .entry-card:nth-child(4){animation-delay:0.20s}
-  .entry-card:nth-child(5){animation-delay:0.25s}
-  .entry-card:nth-child(6){animation-delay:0.30s}
-  .entry-card:nth-child(7){animation-delay:0.35s}
-  .entry-card:nth-child(8){animation-delay:0.40s}
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── CARD HEADER ─────────────────────────────────────── */
-  .entry-header {
-    background: var(--aegean);
-    padding: 0.85rem 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-  .entry-title {
+  .sidebar-block h3 {
     font-family: 'Cinzel', serif;
-    font-size: 1rem;
+    font-size: 0.62rem;
     font-weight: 600;
-    color: var(--marble);
-    flex: 1;
-    line-height: 1.3;
-  }
-  .entry-tag {
-    font-family: 'Cinzel', serif;
-    font-size: 0.55rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--deep-sea);
-    background: var(--pale-gold);
-    padding: 0.2rem 0.55rem;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  /* ── CARD SECTIONS ───────────────────────────────────── */
-  .entry-section {
-    padding: 0.95rem 1.2rem;
-    border-bottom: 1px dashed var(--mist);
-  }
-  .entry-section:last-child { border-bottom: none; }
-
-  .section-label {
-    font-family: 'Cinzel', serif;
-    font-size: 0.6rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--terra);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--mist);
+  }
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--aegean);
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    padding: 0.55rem 0.3rem;
+    border-bottom: 1px dashed var(--mist);
+    transition: color 0.2s, padding-left 0.2s;
+  }
+  .sidebar-link:last-child { border-bottom: none; }
+  .sidebar-link::before { content: '›'; color: var(--gold); font-size: 1rem; line-height: 1; }
+  .sidebar-link:hover { color: var(--terra); padding-left: 0.5rem; }
+
+  /* ── NOTE CARD ───────────────────────────────────────── */
+  .note-card {
+    background: var(--marble);
+    border: 1px solid var(--mist);
+    border-top: 3px solid var(--gold);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.2s;
+  }
+  .note-card.revealed { opacity: 1; transform: none; }
+  .note-card:hover { box-shadow: 0 6px 24px rgba(26,58,92,0.12); }
+
+  /* ── CARD HEADER ─────────────────────────────────────── */
+  .note-header {
+    background: var(--aegean);
+    padding: 1rem 1.4rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .note-number {
+    background: var(--gold);
+    color: var(--deep-sea);
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0;
+  }
+  .note-original {
+    font-size: 1rem;
+    color: var(--marble);
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .note-original small {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(232,201,122,0.6);
+    font-style: normal;
+    margin-top: 0.3rem;
   }
 
-  .entry-section p {
-    font-size: 0.88rem;
-    line-height: 1.9;
-    color: #3a3030;
-    margin-bottom: 0.4rem;
+  /* ── TRANSLATION BAND ────────────────────────────────── */
+  .note-translation {
+    background: var(--terra);
+    color: #fff;
+    padding: 0.85rem 1.4rem 0.85rem 3.6rem;
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.55;
+    border-top: 2px solid rgba(0,0,0,0.15);
+    border-bottom: 2px solid rgba(0,0,0,0.15);
+    position: relative;
   }
-  .entry-section p:last-child { margin-bottom: 0; }
-  .entry-section p strong { color: var(--terra); font-weight: 700; }
+  .note-translation::before {
+    content: attr(data-flag);
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    font-style: normal;
+  }
+
+  /* ── ACCORDION TOGGLE ────────────────────────────────── */
+  .toggle-btn {
+    background: none;
+    border: none;
+    border-top: 1px solid var(--mist);
+    color: var(--aegean);
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.75rem 1.4rem;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.15s, color 0.15s;
+  }
+  .toggle-btn:hover { background: var(--warm-white); color: var(--terra); }
+  .toggle-btn .arrow { margin-left: auto; font-size: 0.65rem; }
+
+  /* ── BREAKDOWN BODY ──────────────────────────────────── */
+  .note-body { display: none; padding: 1.4rem; }
+  .note-body.open { display: block; }
+
+  .breakdown-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--mist);
+  }
+
+  /* ── WORD ROW ────────────────────────────────────────── */
+  .word-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0.4rem 1.2rem;
+    margin-bottom: 0.85rem;
+    align-items: start;
+  }
+  .word-row + .word-row {
+    border-top: 1px dashed var(--mist);
+    padding-top: 0.85rem;
+  }
+  .word-term {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    color: var(--aegean);
+    font-size: 0.92rem;
+    line-height: 1.45;
+    padding-top: 2px;
+  }
+  .word-desc {
+    font-size: 0.87rem;
+    line-height: 1.8;
+    color: #3a3020;
+  }
+  .word-desc .jp-ref {
+    display: block;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 0.2rem;
+  }
+  .word-desc strong { color: var(--terra); }
+  .grammar-tag {
+    display: inline-block;
+    background: var(--aegean);
+    color: var(--pale-gold);
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    padding: 0.15rem 0.45rem;
+    margin-left: 0.3rem;
+    vertical-align: middle;
+    text-transform: uppercase;
+  }
 
   /* ── MEMO SECTION ────────────────────────────────────── */
-  .entry-section.memo {
+  .memo-section {
+    margin-top: 1rem;
+    padding: 0.9rem 1.1rem;
     background: var(--memo-bg);
+    border-left: 3px solid var(--gold);
   }
-  .entry-section.memo .section-label { color: #8b6a2a; }
-  .entry-section.memo p {
+  .memo-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8b6a2a;
+    margin-bottom: 0.5rem;
+  }
+  .memo-section p {
     font-size: 0.83rem;
     color: #5a4020;
     font-style: italic;
+    line-height: 1.85;
   }
-  .entry-section.memo p strong { color: var(--aegean); }
+  .memo-section p strong { color: var(--aegean); font-style: normal; }
 
   /* ── FOOTER ──────────────────────────────────────────── */
   footer {
@@ -254,17 +406,21 @@
   }
 
   /* ── RESPONSIVE ──────────────────────────────────────── */
-  @media (max-width: 700px) {
+  @media (max-width: 760px) {
+    .layout { flex-direction: column; gap: 0; }
+    .sidebar-col { width: 100%; order: -1; }
+    .sidebar-block { position: static; margin-bottom: 2rem; }
+    .word-row { grid-template-columns: 1fr; gap: 0.2rem; }
+    .note-header { flex-direction: column; gap: 0.5rem; }
     nav { gap: 1.1rem; }
     nav a { font-size: 0.62rem; letter-spacing: 0.1em; }
-    .container { padding: 2.5rem 1rem 4rem; }
   }
   @media (max-width: 480px) {
     nav a:not(.active) { display: none; }
-    .entry-title { font-size: 0.88rem; }
+    .layout { padding: 0 1rem; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .entry-card { animation: none; }
+    .note-card { opacity: 1; transform: none; transition: none; }
   }
 </style>
 </head>
@@ -296,130 +452,327 @@
 
 <div class="meander"></div>
 
-<!-- ENTRIES -->
-<div class="container">
+<!-- LAYOUT -->
+<div class="layout">
 
-  <div class="entry-card">
-    <div class="entry-header">
-      <span class="entry-title">Tramp Stamp</span>
-      <span class="entry-tag">Λέξη</span>
-    </div>
-    <div class="entry-section">
-      <div class="section-label">Σημείωση</div>
-      <p>Η έκφραση για τατουάζ που γίνεται στη μέση, πολύ χαμηλά. Η κυριολεκτική μετάφραση είναι αρκετά ειρωνική — κάτι σαν «σφραγίδα ελαφρόμυαλης».</p>
-    </div>
-  </div>
+  <!-- MAIN -->
+  <div class="main-col">
 
-  <div class="entry-card">
-    <div class="entry-header">
-      <span class="entry-title">stigma</span>
-      <span class="entry-tag">Λέξη</span>
+    <!-- ★ LITERARY TRANSLATION -->
+    <div class="note-card">
+      <div class="note-header">
+        <div class="note-number">★</div>
+        <div class="note-original">
+          「私の人生は、その瞬間から始まったような気がする。」
+          <small>小説翻訳 / Literary Translation</small>
+        </div>
+      </div>
+      <div class="note-translation" data-flag="🇯🇵→🇬🇧">
+        "It feels as though my life began from that very moment."
+      </div>
+      <button class="toggle-btn open" onclick="toggleNote(this)">
+        <span>✦ Ανάλυση λέξεων και γραμματικής</span>
+        <span class="arrow">▲</span>
+      </button>
+      <div class="note-body open">
+        <div class="breakdown-title">Ανάλυση λέξεων</div>
+        <div class="word-row">
+          <div class="word-term">It feels as though</div>
+          <div class="word-desc">
+            「〜のような気がする」— υποκειμενική αίσθηση.<br>
+            <span class="jp-ref">Πιο φυσικό από "I feel that" — η αγγλική προτιμά το απρόσωπο "it" εδώ.</span>
+          </div>
+        </div>
+        <div class="word-row">
+          <div class="word-term">began from</div>
+          <div class="word-desc">
+            「始まった」— απλός παρελθοντικός.<br>
+            <span class="grammar-tag">simple past</span>
+            <span class="jp-ref">Όχι "has begun" — η αίσθηση είναι αναδρομική, όχι συνεχής.</span>
+          </div>
+        </div>
+        <div class="word-row">
+          <div class="word-term">that very moment</div>
+          <div class="word-desc">
+            「その瞬間」— το <strong>very</strong> ενισχύει την ακρίβεια της στιγμής.<br>
+            <span class="jp-ref">"That moment" μόνο = σωστό, αλλά "that very moment" = πιο λογοτεχνικό.</span>
+          </div>
+        </div>
+        <div class="memo-section">
+          <div class="memo-label">📝 Σημείωση κρίσης</div>
+          <p>「気がする」 = <strong>"it feels as though"</strong> — όχι "I think". Το "think" είναι πιο λογικό, αλλά εδώ χρειαζόμαστε συναισθηματικό/υποκειμενικό τόνο.</p>
+        </div>
+      </div>
     </div>
-    <div class="entry-section">
-      <div class="section-label">Σημείωση</div>
-      <p>Η αρνητική εντύπωση που η κοινωνία κολλάει σε ένα χαρακτηριστικό ή θέση — «το στίγμα που βαραίνει κάποιον».</p>
-      <p><strong>social stigma</strong> — κοινωνικό στίγμα · <strong>the stigma around mental illness</strong> — το στίγμα γύρω από την ψυχική ασθένεια</p>
-    </div>
-  </div>
 
-  <div class="entry-card">
-    <div class="entry-header">
-      <span class="entry-title">pseudo-famous</span>
-      <span class="entry-tag">Έκφραση</span>
+    <!-- NOTE 1 -->
+    <div class="note-card">
+      <div class="note-header">
+        <div class="note-number">1</div>
+        <div class="note-original">
+          「よし！河童を捕まえて一攫千金目指すぞ！」
+          <small>漫画セリフ / Manga Dialogue</small>
+        </div>
+      </div>
+      <div class="note-translation" data-flag="🇯🇵→🇬🇧">
+        "Alright! I'll catch a kappa and make a fortune all at once!"
+      </div>
+      <button class="toggle-btn open" onclick="toggleNote(this)">
+        <span>✦ Ανάλυση λέξεων και γραμματικής</span>
+        <span class="arrow">▲</span>
+      </button>
+      <div class="note-body open">
+        <div class="breakdown-title">Ανάλυση λέξεων</div>
+        <div class="word-row">
+          <div class="word-term">Alright!</div>
+          <div class="word-desc">
+            「よし！」— Ελαφρύ, ζωηρό επιφώνημα.<br>
+            <span class="jp-ref">"Okay!" ή "Right!" επίσης δουλεύουν, αλλά "Alright!" έχει πιο παρορμητικό χαρακτήρα.</span>
+          </div>
+        </div>
+        <div class="word-row">
+          <div class="word-term">I'll catch</div>
+          <div class="word-desc">
+            「捕まえて（〜するぞ）」— μέλλον / πρόθεση.<br>
+            <span class="grammar-tag">will + infinitive</span>
+            <span class="jp-ref">Η ιαπωνική te-form εκφράζει ακολουθία πράξεων, η αγγλική τη διαχωρίζει σε δύο προτάσεις.</span>
+          </div>
+        </div>
+        <div class="word-row">
+          <div class="word-term">make a fortune</div>
+          <div class="word-desc">
+            「一攫千金」— Αγγλική ιδιωματική έκφραση για «γρήγορο πλούτο».<br>
+            <span class="jp-ref">"Strike it rich" ή "get rich quick" επίσης δυνατά — "make a fortune" πιο neutral.</span>
+          </div>
+        </div>
+        <div class="word-row">
+          <div class="word-term">all at once</div>
+          <div class="word-desc">
+            「一気に」— αποδίδει την αίσθηση της ταυτόχρονης / ενιαίας επιτυχίας.
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="entry-section">
-      <div class="section-label">Σημείωση</div>
-      <p>«Ψευδο-διάσημος» — γνωστός μόνο σε συγκεκριμένο κύκλο ή στο διαδίκτυο, όχι ευρύτερα. Το <strong>pseudo-</strong> (ψευδο-) προέρχεται από τα ελληνικά!</p>
-      <p><strong>pseudonym</strong> — ψευδώνυμο (όπως το «pen name»)</p>
-    </div>
-  </div>
 
-  <div class="entry-card">
-    <div class="entry-header">
-      <span class="entry-title">conscience</span>
-      <span class="entry-tag">Λέξη</span>
+    <!-- NOTE 2 -->
+    <div class="note-card">
+      <div class="note-header">
+        <div class="note-number">2</div>
+        <div class="note-original">
+          「借金作ってなにしてるの？」
+          <small>漫画セリフ / Manga Dialogue</small>
+        </div>
+      </div>
+      <div class="note-translation" data-flag="🇯🇵→🇬🇧">
+        "You've racked up debt — what are you even doing?"
+      </div>
+      <button class="toggle-btn open" onclick="toggleNote(this)">
+        <span>✦ Ανάλυση λέξεων και γραμματικής</span>
+        <span class="arrow">▲</span>
+      </button>
+      <div class="note-body open">
+        <div class="breakdown-title">Ανάλυση λέξεων</div>
+        <div class="word-row">
+          <div class="word-term">You've racked up</div>
+          <div class="word-desc">
+            「作って（借金を）」— παρακείμενος.<br>
+            <span class="grammar-tag">present perfect</span>
+            <span class="jp-ref">"rack up" = συσσωρεύω (ιδιωματικό). "You've made debts" είναι σωστό αλλά λιγότερο φυσικό.</span>
+          </div>
+        </div>
+        <div class="word-row">
+          <div class="word-term">what are you even doing</div>
+          <div class="word-desc">
+            「なにしてるの？」— το <strong>even</strong> αποδίδει τον τόνο απορίας / απογοήτευσης.<br>
+            <span class="jp-ref">Χωρίς "even": ουδέτερη ερώτηση. Με "even": νόημα «τι στο καλό...».</span>
+          </div>
+        </div>
+        <div class="memo-section">
+          <div class="memo-label">📝 Σημείωση κρίσης</div>
+          <p>Η te-form 「借金作って」 εκφράζει αιτία/πλαίσιο, όχι αυστηρά ακολουθία. Γι' αυτό η αγγλική χρησιμοποιεί <strong>em-dash (—)</strong> για να δείξει ότι η δεύτερη πρόταση είναι αντίδραση στην πρώτη.</p>
+        </div>
+      </div>
     </div>
-    <div class="entry-section">
-      <div class="section-label">Σημείωση</div>
-      <p>Συνείδηση — η εσωτερική φωνή που κρίνει το σωστό και το λάθος.</p>
-      <p><strong>My conscience wouldn't let me do that.</strong> — Η συνείδησή μου δεν μου επέτρεπε να το κάνω αυτό.</p>
-    </div>
-  </div>
 
-  <div class="entry-card">
-    <div class="entry-header">
-      <span class="entry-title">«Thank you.» — Δεν είναι πάντα ευγνωμοσύνη</span>
-      <span class="entry-tag">Έκφραση</span>
+    <!-- NOTE 3 -->
+    <div class="note-card">
+      <div class="note-header">
+        <div class="note-number">3</div>
+        <div class="note-original">
+          「あんたなんか人間じゃない」
+          <small>漫画セリフ / Manga Dialogue</small>
+        </div>
+      </div>
+      <div class="note-translation" data-flag="🇯🇵→🇬🇧">
+        "You're not even human."
+      </div>
+      <button class="toggle-btn open" onclick="toggleNote(this)">
+        <span>✦ Ανάλυση λέξεων και γραμματικής</span>
+        <span class="arrow">▲</span>
+      </button>
+      <div class="note-body open">
+        <div class="breakdown-title">Ανάλυση λέξεων</div>
+        <div class="word-row">
+          <div class="word-term">You're not even</div>
+          <div class="word-desc">
+            「〜なんかじゃない」— το <strong>even</strong> αποδίδει την έμφαση του 「なんか」.<br>
+            <span class="jp-ref">"You're not human" = ουδέτερο. "not even human" = απαξιωτικό, με έμφαση.</span>
+          </div>
+        </div>
+        <div class="word-row">
+          <div class="word-term">human</div>
+          <div class="word-desc">
+            「人間」— επίθετο ή ουσιαστικό στα αγγλικά.<br>
+            <span class="jp-ref">"not even a human being" = πιο επίσημο. "not even human" = πιο καθημερινό και δυνατό ως σεναριακό σχόλιο.</span>
+          </div>
+        </div>
+        <div class="memo-section">
+          <div class="memo-label">📝 Σημείωση κρίσης</div>
+          <p>Το 「あんた」 είναι πιο αγενές από το 「あなた」. Στα αγγλικά δεν υπάρχει αντίστοιχη διαφορά στη λέξη "you" — ο τόνος μεταφέρεται μέσω του <strong>"not even"</strong>.</p>
+        </div>
+      </div>
     </div>
-    <div class="entry-section">
-      <div class="section-label">Σημείωση</div>
-      <p>Στα αμερικανικά αγγλικά, το «Thank you.» χρησιμοποιείται συχνά ειρωνικά — λες «ευχαριστώ» για να κλείσεις τη συζήτηση ή να δείξεις ότι ήξερες ήδη.</p>
-      <p>Αντί για ευχαριστία, οι Αμερικανοί συχνά λένε <strong>«I will try that.»</strong> ή <strong>«You have a point.»</strong> — αναγνωρίζοντας ότι ο άλλος είχε δίκιο.</p>
-      <p>Στην αγγλόφωνη κουλτούρα, το <strong>acknowledgement</strong> (αναγνώριση) λειτουργεί συχνά ως υποκατάστατο της ευγνωμοσύνης.</p>
-    </div>
-  </div>
 
-  <div class="entry-card">
-    <div class="entry-header">
-      <span class="entry-title">«Πώς να μεταφράσω αυτή τη φράση;»</span>
-      <span class="entry-tag">Μετάφραση</span>
+    <!-- NOTE 4 — Translation problem -->
+    <div class="note-card">
+      <div class="note-header">
+        <div class="note-number">4</div>
+        <div class="note-original">
+          Time. How it passes, from moment to moment. Haven't you ever noticed how some things change when you aren't looking at them?
+          <small>Charlie the Purple Giraffe Was Acting Strangely / David D. Levine</small>
+        </div>
+      </div>
+      <div class="note-translation" data-flag="🇬🇧→🇯🇵">
+        時間だ。時間が瞬間から瞬間へと、どう過ぎていくのか。見ていない隙になにかが変わることに気が付いたことはないか？
+      </div>
+      <button class="toggle-btn open" onclick="toggleNote(this)">
+        <span>✦ Ανάλυση λέξεων και γραμματικής</span>
+        <span class="arrow">▲</span>
+      </button>
+      <div class="note-body open">
+        <div class="breakdown-title">Ανάλυση λέξεων</div>
+        <div class="word-row">
+          <div class="word-term">from moment to moment</div>
+          <div class="word-desc">
+            「瞬間から瞬間へと」— Διακριτές, διαδοχικές στιγμές.<br>
+            <span class="jp-ref">❌「刻一刻」は連続的な変化のイメージ — ここでは「区切られた瞬間」なので不適切。</span>
+          </div>
+        </div>
+        <div class="word-row">
+          <div class="word-term">change</div>
+          <div class="word-desc">
+            Ενεστώτας — γενική αλήθεια.<br>
+            <span class="grammar-tag">present simple</span>
+            <span class="jp-ref">❌「変わった」（過去）は間違い。「変わる」または「変わること」が正しい。</span>
+          </div>
+        </div>
+        <div class="memo-section">
+          <div class="memo-label">📝 Σημείωση κρίσης</div>
+          <p>Στη συγκεκριμένη ιστορία, οι «στιγμές» είναι δομικές μονάδες (σαν πάνελ manga). <strong>「瞬間から瞬間へと」</strong> αποδίδει αυτή την εικόνα — το <strong>「刻一刻」</strong> όχι. Επίσης "change" = ενεστώτας· αυτό ήταν απλό λάθος αστοχίας.</p>
+        </div>
+      </div>
     </div>
-    <div class="entry-section">
-      <div class="section-label">Πρωτότυπο (Charlie the Purple Giraffe Was Acting Strangely / David D. Levine)</div>
-      <p>Time. How it passes, from moment to moment. Haven't you ever noticed how some things change when you aren't looking at them?</p>
-    </div>
-    <div class="entry-section">
-      <div class="section-label">Μετάφραση</div>
-      <p>時間だ。時間が瞬間から瞬間へと、どう過ぎていくのか。見ていない隙になにかが変わることに気が付いたことはないか？</p>
-    </div>
-    <div class="entry-section memo">
-      <div class="section-label">📝 Σημείωση κρίσης</div>
-      <p>«moment to moment» = «瞬間から瞬間へと» — όχι «刻一刻» (刻一刻 σημαίνει σταδιακή, συνεχής αλλαγή, αλλά εδώ η έννοια είναι <strong>διακριτές στιγμές</strong>).</p>
-      <p>«change» είναι ενεστώτας — όχι παρελθοντικός. Απλό λάθος αστοχίας.</p>
-    </div>
-  </div>
 
-  <div class="entry-card">
-    <div class="entry-header">
-      <span class="entry-title">«Πώς να μεταφράσω αυτή τη φράση;»</span>
-      <span class="entry-tag">Μετάφραση</span>
+    <!-- NOTE 5 -->
+    <div class="note-card">
+      <div class="note-header">
+        <div class="note-number">5</div>
+        <div class="note-original">
+          Solipsistic delusions are frequently merely the initial manifestation of a general insensitivity to legitimacy.
+          <small>Charlie the Purple Giraffe Was Acting Strangely / David D. Levine</small>
+        </div>
+      </div>
+      <div class="note-translation" data-flag="🇬🇧→🇯🇵">
+        独我論的妄想は、しばしば他者の人格の正当性やときにはその存在への全般的鈍感さの単なる初期症状とみなされています。
+      </div>
+      <button class="toggle-btn open" onclick="toggleNote(this)">
+        <span>✦ Ανάλυση λέξεων και γραμματικής</span>
+        <span class="arrow">▲</span>
+      </button>
+      <div class="note-body open">
+        <div class="breakdown-title">Ανάλυση λέξεων</div>
+        <div class="word-row">
+          <div class="word-term">solipsistic</div>
+          <div class="word-desc">
+            <strong>「独我論的」</strong> — Φιλοσοφική θέση: μόνο το εγώ και τα προϊόντα του υπάρχουν πραγματικά.<br>
+            <span class="jp-ref">❌「唯我的」= απλώς εγωκεντρικός. Χάνεται η φιλοσοφική ακρίβεια.</span>
+          </div>
+        </div>
+        <div class="word-row">
+          <div class="word-term">initial manifestation</div>
+          <div class="word-desc">
+            「初期症状」— αρχική εκδήλωση / σύμπτωμα.<br>
+            <span class="jp-ref">「症状」έχει ιατρικό χαρακτήρα — ταιριάζει εδώ γιατί το κείμενο ακούγεται σαν ψυχιατρική διάγνωση.</span>
+          </div>
+        </div>
+        <div class="word-row">
+          <div class="word-term">general</div>
+          <div class="word-desc">
+            「全般的な」— «που αφορά ολόκληρη την έκταση κάποιου πράγματος».<br>
+            <span class="jp-ref">Ακόμα λίγο ανοιχτό — αλλά καλύτερο από「一般的な」(= συνηθισμένο / κοινό).</span>
+          </div>
+        </div>
+        <div class="memo-section">
+          <div class="memo-label">📝 Σημείωση κρίσης</div>
+          <p>Η λέξη <strong>「legitimacy」</strong> εδώ δεν σημαίνει «νομιμότητα» αλλά «η δικαιολογημένη υπόσταση του άλλου ως πρόσωπο». Γι' αυτό προσθέσαμε「他者の人格の正当性」— χωρίς αυτήν η μετάφραση γίνεται πολύ αφηρημένη.</p>
+        </div>
+      </div>
     </div>
-    <div class="entry-section">
-      <div class="section-label">Πρωτότυπο</div>
-      <p>Solipsistic delusions are frequently merely the initial manifestation of a general insensitivity to legitimacy.</p>
-    </div>
-    <div class="entry-section">
-      <div class="section-label">Μετάφραση</div>
-      <p>独我論的妄想は、しばしば他者の人格の正当性やときにはその存在への全般的鈍感さの単なる初期症状とみなされています。</p>
-    </div>
-    <div class="entry-section memo">
-      <div class="section-label">📝 Σημείωση κρίσης</div>
-      <p>«solipsistic» → <strong>「独我的」</strong> (όχι 「唯我的」) — αναφέρεται στη φιλοσοφική θέση ότι μόνο το εγώ και τα προϊόντα του υπάρχουν πραγματικά.</p>
-      <p>«initial manifestation» = 初期症状 · «general» → 「全般的な」 — ακόμα λίγο ανοιχτό.</p>
-    </div>
-  </div>
 
-  <div class="entry-card">
-    <div class="entry-header">
-      <span class="entry-title">«Πώς να μεταφράσω αυτή τη φράση;»</span>
-      <span class="entry-tag">Μετάφραση</span>
+    <!-- NOTE 6 -->
+    <div class="note-card">
+      <div class="note-header">
+        <div class="note-number">6</div>
+        <div class="note-original">
+          The protagonist kept drawing, even when no one believed in her story.
+          <small>英→日 翻訳練習 / Translation Exercise</small>
+        </div>
+      </div>
+      <div class="note-translation" data-flag="🇬🇧→🇯🇵">
+        誰も主人公のストーリーを信じていなかったのに、それでも彼女は描き続けた。
+      </div>
+      <button class="toggle-btn open" onclick="toggleNote(this)">
+        <span>✦ Ανάλυση λέξεων και γραμματικής</span>
+        <span class="arrow">▲</span>
+      </button>
+      <div class="note-body open">
+        <div class="breakdown-title">Ανάλυση λέξεων</div>
+        <div class="word-row">
+          <div class="word-term">believed in</div>
+          <div class="word-desc">
+            「信じていなかった」— πιο παθητικό ως 「信じてもらえない」 για να τονιστεί η απουσία υποστήριξης.<br>
+            <span class="jp-ref">「信じる」= πιστεύω · 「信じてもらえる」= να με πιστεύουν — λεπτή αλλά σημαντική διαφορά.</span>
+          </div>
+        </div>
+        <div class="word-row">
+          <div class="word-term">even when</div>
+          <div class="word-desc">
+            <strong>「それでも」</strong> — ο άξονας της πρότασης. Εκφράζει «παρ' όλα αυτά».<br>
+            <span class="grammar-tag">concessive</span>
+            <span class="jp-ref">Η δομή「〜のに、それでも〜した」αποδίδει την αντίθεση της αγγλικής "even when".</span>
+          </div>
+        </div>
+        <div class="memo-section">
+          <div class="memo-label">📝 Σημείωση κρίσης</div>
+          <p>Η δομή <strong>「〜のに、それでも〜」</strong> είναι ο πυρήνας. Αν χαθεί αυτή η αντίθεση, χάνεται η συναισθηματική δύναμη της πρότασης.</p>
+        </div>
+      </div>
     </div>
-    <div class="entry-section">
-      <div class="section-label">Πρωτότυπο</div>
-      <p>The protagonist kept drawing, even when no one believed in her story.</p>
-    </div>
-    <div class="entry-section">
-      <div class="section-label">Μετάφραση</div>
-      <p>誰も主人公のストーリーを信じていなかったのに、それでも彼女は描き続けた。</p>
-    </div>
-    <div class="entry-section memo">
-      <div class="section-label">📝 Σημείωση κρίσης</div>
-      <p>«believed in» → παθητικότερα ως 「信じてもらえない」 για να αποδοθεί η έμφαση στην απουσία υποστήριξης.</p>
-      <p><strong>«even when» = 「それでも」</strong> — ο άξονας της πρότασης. Η αντίθεση πρέπει να διατηρηθεί και στα ιαπωνικά.</p>
-    </div>
-  </div>
 
-</div><!-- /container -->
+  </div><!-- /main-col -->
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar-col">
+    <div class="sidebar-block">
+      <h3>📂 メニュー</h3>
+      <a class="sidebar-link" href="grammar.html">文法ノート</a>
+      <a class="sidebar-link" href="novel.html">小説翻訳</a>
+      <a class="sidebar-link" href="studyblog.html">勉強のひとことブログ</a>
+      <a class="sidebar-link" href="dictionary.html">辞書</a>
+    </div>
+  </aside>
+
+</div><!-- /layout -->
 
 <!-- FOOTER -->
 <div class="meander"></div>
@@ -436,6 +789,21 @@
     All images and text on this site are prohibited from unauthorized reproduction and AI training use.
   </p>
 </footer>
+
+<script>
+  function toggleNote(btn) {
+    const body = btn.nextElementSibling;
+    body.classList.toggle('open');
+    btn.classList.toggle('open');
+    btn.querySelector('.arrow').textContent = body.classList.contains('open') ? '▲' : '▼';
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('revealed'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.note-card').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
